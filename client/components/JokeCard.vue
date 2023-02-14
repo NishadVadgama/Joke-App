@@ -36,7 +36,15 @@ const emit = defineEmits<{
     </v-card-title>
     <v-card-text>
       <v-banner color="secondary" outlined rounded>
-        <div class="subtitle-1 user-select-none">{{ props.joke }}</div>
+        <div v-if="props.joke" class="subtitle-1 user-select-none">
+          {{ props.joke }}
+        </div>
+        <v-skeleton-loader
+          v-else
+          boilerplate
+          elevation="2"
+          type="heading"
+        ></v-skeleton-loader>
       </v-banner>
     </v-card-text>
   </v-card>

@@ -7,8 +7,8 @@ export type JokeForm = {
 }
 
 // Refs / Reactive
-const number = ref<Number>()
-const replacement = ref<String>('')
+const number = ref()
+const replacement = ref('')
 const form = ref()
 
 // Input validation rules.
@@ -40,7 +40,7 @@ const emit = defineEmits<{
 const handleSubmitJokeForm = () => {
   // Validation
   if (form.value.validate() === true && typeof number.value !== 'undefined') {
-    emit('handleModifyJoke', number.value, replacement.value)
+    emit('handleModifyJoke', parseInt(number.value), replacement.value)
   }
 }
 </script>
